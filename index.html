@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Component Test</title>
+  <script src="./accessibledropdown.js"></script>
+  <style>
+    large-dropdown {
+      --background-color: #FFF;
+      --text-color: #000;
+      --highlight-color: #464646;
+    }
+
+    large-dropdown.inverted {
+      --background-color: #000;
+      --text-color: #FFF;
+      --highlight-color: #464646;
+    }
+
+    .restrain {
+      width: 300px;
+    }
+
+    .restrain select {
+      max-width: 50%;
+    }
+
+    #first {
+      max-width: 480px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Dropdown component demo</h1>
+  <div class="restrain">
+    <h2>Native component</h2>
+    <label for="native">Select an option:</label>
+    <select name="native" id="native">
+      <option value="option1">Option 1</option>
+      <option>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse at quia, voluptatibus laudantium unde
+        delectus
+        eum numquam fugit rerum? Incidunt exercitationem numquam voluptas optio fuga at suscipit deserunt non veritatis?
+      </option>
+      <option value="a">A Choice 2</option>
+      <option value="b">B Choice 3</option>
+      <option value="c">C Choice 11</option>
+      <option value="d">D Choice 12</option>
+      <option value="e">E Choice 13</option>
+      <option value="f">F Choice 21</option>
+      <option value="g">G Choice 22</option>
+      <option value="h">H Choice 23</option>
+
+    </select>
+  </div>
+
+  <h2>Custom component</h2>
+
+  <large-dropdown label="Select a Choice" id="first">
+    <option value="Lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse at quia, voluptatibus laudantium
+      unde delectus
+      eum numquam fugit rerum? Incidunt exercitationem numquam voluptas optio fuga at suscipit deserunt non veritatis?
+    </option>
+    <option value="a">A Choice 2</option>
+    <option value="b">B Choice 3</option>
+    <option value="c">C Choice 11</option>
+    <option value="d">D Choice 12</option>
+    <option value="e">E Choice 13</option>
+    <option value="f">F Choice 21</option>
+    <option value="g">G Choice 22</option>
+    <option value="h">H Choice 23</option>
+  </large-dropdown>
+
+  <large-dropdown lang="fr-ca" label="Faites un choix" class="inverted">
+    <option>Incidunt exercitationem numquam voluptas optio fuga at suscipit deserunt non veritatis?</option>
+    <option>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse at quia, voluptatibus laudantium unde delectus
+      eum numquam fugit rerum? Incidunt exercitationem numquam voluptas optio fuga at suscipit deserunt non veritatis?
+    </option>
+    <option>A Choix 2</option>
+    <option>B Choix 3</option>
+    <option>D Choix 12</option>
+    <option>E Choix 13</option>
+    <option>F Choix 21</option>
+    <option>G Choix 22</option>
+    <option>H Choix 23</option>
+  </large-dropdown>
+
+  <large-dropdown label="Choose an option" id="myDropdown2">
+    <option value="1">One</option>
+    <option selected>Two (preselected)</option>
+    <option enablehtml><strong>Three</strong></option>
+    <option disabled value="4">Four (disabled)</option>
+    <option>Five</option>
+    <option>Six</option>
+    <option>Seven</option>
+    <option>Eight</option>
+    <option>Nine</option>
+    <option>Ten</option>
+  </large-dropdown>
+
+  <large-dropdown id="myDropdown"
+    choices='[{"id":"option1","text":"Option 1","value":"1"}, {"id":"option2","text":"Option 2","value":"2"}]'>
+  </large-dropdown>
+
+
+  <script>
+    document.querySelectorAll('large-dropdown').forEach(dropdown => {
+      dropdown.addEventListener('change', event => {
+        console.log('Selected text:', event.detail.value);
+        console.log('Selected id:', event.detail.id);
+      });
+    });
+  </script>
+
+  <script>
+    const myDropdown = document.getElementById('myDropdown');
+    myDropdown.label = 'Choose an option (Generated)';
+    myDropdown.addOption({
+      id: 'option-11',
+      text: 'Option 4',
+      value: '5'
+    });
+  </script>
+
+</body>
+
+</html>
