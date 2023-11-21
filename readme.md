@@ -24,6 +24,15 @@ To use `DropdownComponent`, include it in your HTML as follows:
   <option value="3">Option 3</option>
 </large-dropdown>
 ```
+### Preselected and Disabled Options
+```html
+<large-dropdown label="Choose an option" id="myDropdown2">
+  <option value="1">One</option>
+  <option selected>Two (preselected)</option>
+  <option disabled value="4">Four (disabled)</option>
+  <!-- More options -->
+</large-dropdown>
+```
 
 ### JavaScript Integration
 
